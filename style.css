@@ -59,5 +59,15 @@ max-width: 390px;
 .task_to_do {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #755535;
 
+}
+
+.flex_row {
+    display: flex;
+}
+
+.task_amount {
+    margin-right: 20px;
 }
