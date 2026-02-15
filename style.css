@@ -1,0 +1,63 @@
+.icon {
+    max-width: 40px;
+    height: 40px;
+}
+
+.tab {
+    width: 200px;
+    height: 44px;
+    margin: 0;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-style: solid 1px;
+    border-color: #755535;
+    z-index: 1;
+    background-color: #FFF4DE;
+}
+
+.active_tab {
+    border-bottom: 0;
+    z-index: 2;
+    background-color: #FFFBF3;
+}
+
+input {
+    border-radius: 10px;
+    border-color: #755535;
+    border-style: groove;
+}
+
+#active_to_do {
+max-width: 390px;
+    border: solid 2px;
+    border-color: #755535;
+    padding-top: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 25px;
+    margin-top: -2px;
+    height: 600px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #FFFBF3;
+}
+
+#add_section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#input_number {
+    width: 40px;
+}
+
+#input_text {
+    width: 250px;
+}
+
+.task_to_do {
+    display: flex;
+    justify-content: space-between;
+
+}
