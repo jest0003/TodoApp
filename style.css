@@ -93,4 +93,5 @@ li {
     justify-content: space-between;
     align-items: center;
     border-bottom: solid 1px #755535;
+    margin-top: 16px;
 }
