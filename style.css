@@ -1,6 +1,7 @@
 .icon {
     max-width: 40px;
     height: 40px;
+    cursor: pointer;
 }
 
 .tab {
@@ -11,7 +12,7 @@
     border-top-right-radius: 25px;
     border-style: solid 1px;
     border-color: #755535;
-    z-index: 1;
+    z-index: 0;
     background-color: #FFF4DE;
 }
 
@@ -27,8 +28,12 @@ input {
     border-style: groove;
 }
 
+button {
+    cursor: pointer;
+}
+
 #active_to_do {
-max-width: 390px;
+    width: 391px;
     border: solid 2px;
     border-color: #755535;
     padding-top: 25px;
@@ -40,6 +45,23 @@ max-width: 390px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     background-color: #FFFBF3;
+    z-index: 1;
+}
+
+#active_done {
+    width: 391px;
+    border: solid 2px;
+    border-color: #755535;
+    padding-top: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 25px;
+    margin-top: -2px;
+    height: 600px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #FFFBF3;
+    z-index: 1;
 }
 
 #add_section {
@@ -49,7 +71,7 @@ max-width: 390px;
 }
 
 #input_number {
-    width: 40px;
+    width: 50px;
 }
 
 #input_text {
@@ -64,10 +86,21 @@ max-width: 390px;
 
 }
 
+.task_done {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #755535;
+}
+
 .flex_row {
     display: flex;
 }
 
-.task_amount {
+.margin_right {
     margin-right: 20px;
+}
+li, ul {
+display: inline;
+list-style: none;
 }
