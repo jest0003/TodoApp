@@ -12,18 +12,21 @@ todoBtn.addEventListener("click", submitTodo)
 function submitTodo () {
     const todoObject = {text:todoText.value, amount:todoAmount.value, done:false, liked:false, id:self.crypto.randomUUID ()}
     todoArr.push(todoObject);
-    console.log("todoArr", todoArr);
     filterAndSort();
 }
 
 function filterAndSort () {
-    showTaskArr();
+    const activeTask = todoArr.filter(elm => !elm.done);
+    const doneTask = todoArr.filter(elm => elm.done);
+
+    showTaskArr(activeTask);
+    showDoneArr(doneTask);
     //local storage
 }
 
-function showTaskArr() {
+function showTaskArr(arr) {
     task_container.innerHTML="";
-    todoArr.forEach (elm => {
+    arr.forEach (elm => {
 
         const li = document.createElement("li");
         li.innerHTML=`<p>${elm.text}</p>
@@ -33,6 +36,7 @@ function showTaskArr() {
         <img class="icon likingIt" src=${elm.liked?"love.png":"love-empty.png"} alt="" /></div>`
 
         task_container.appendChild(li);
+        console.log("done =", `${elm.done}`)
 
         todoAmount.value = null;
         todoText.value = null;
@@ -46,16 +50,42 @@ function showTaskArr() {
             }
              if (evt.target.classList.contains("taskDone")){
                 console.log("task done clicked", `${elm.id}`);
-                
+                elm.done = true;
                 //flyttes her hen til done fanen
                 //Skal hive fat i id: 
-                doneList ();
+                console.log("done i if =", `${elm.done}`)
+                filterAndSort ();
             }
            }); 
 
     })
 }
 
- function doneList () {
-done_container
+ function showDoneArr (arr) {
+done_container.innerHTML="";
+
+arr.forEach (elm => {
+    const li = document.createElement("li");
+    li.innerHTML= `<p>${elm.text}</p>
+        <div class="flex_row">
+        <p class="margin_right">${elm.amount}</p>
+        <img class="icon margin_right delete" src="delete.png"} alt="" />
+        <img class="icon undoTask" src="file.png" alt="" /></div>`
+
+    done_container.appendChild(li);
+
+    li.addEventListener("click", (evt)=> {
+        if (evt.target.classList.contains("undoTask")){
+            elm.done = false;
+            filterAndSort ();
+        }
+
+        if (evt.target.classList.contains("delete")) {
+            const index = todoArr.findIndex(targetArr => targetArr.id === elm.id);
+            todoArr.splice(index, 1);
+            filterAndSort ();
+
+        }
+    }) 
+});
 }
