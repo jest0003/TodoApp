@@ -88,3 +88,9 @@ li, ul {
 display: inline;
 list-style: none;
 }
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #755535;
+}

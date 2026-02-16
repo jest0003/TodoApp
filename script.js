@@ -1,4 +1,5 @@
 const todoText = document.querySelector("#input_text");
+const todoAmount = document.querySelector("#input_number");
 const todoBtn = document.querySelector("#submit_task");
 //const todoContainer = document.querySelector("");
 const todoArr = [];
@@ -9,7 +10,7 @@ const tester = document.querySelector(".tester");
 todoBtn.addEventListener("click", submitTodo)
 
 function submitTodo () {
-    const todoObject = {text:todoText.value, done:false, liked:false,id:self.crypto.randomUUID ()}
+    const todoObject = {text:todoText.value, amount:todoAmount.value, done:false, liked:false,id:self.crypto.randomUUID ()}
     todoArr.push(todoObject);
     console.log("todoArr", todoArr);
     filterAndSort();
@@ -17,16 +18,19 @@ function submitTodo () {
 
 function filterAndSort () {
     showTaskArr();
+    //local storage
 }
 
 function showTaskArr() {
     tester.innerHTML="";
     todoArr.forEach (elm => {
 
-        const li = document.createElement("li")
-        console.log(elm.liked)
-        li.innerHTML=`<h1>${elm.text}</h1>
-        <img class="icon margin_right" src=${elm.liked?"love.png":"love-empty.png"} alt="" />`
+        const li = document.createElement("li");
+        li.innerHTML=`<p>${elm.text}</p>
+        <div class="flex_row">
+        <p class="margin_right">${elm.amount}</p>
+        <img class="icon margin_right" src="check-mark.png" alt="" />
+        <img class="icon" src=${elm.liked?"love.png":"love-empty.png"} alt="" /></div>`
 
         tester.appendChild(li);
         li.addEventListener("click",(evt)=> {
