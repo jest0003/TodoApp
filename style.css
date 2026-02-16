@@ -32,23 +32,7 @@ button {
     cursor: pointer;
 }
 
-#active_to_do {
-    width: 391px;
-    border: solid 2px;
-    border-color: #755535;
-    padding-top: 25px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 25px;
-    margin-top: -2px;
-    height: 600px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    background-color: #FFFBF3;
-    z-index: 1;
-}
-
-#active_done {
+.active_section {
     width: 391px;
     border: solid 2px;
     border-color: #755535;
