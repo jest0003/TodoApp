@@ -17,6 +17,7 @@
 }
 
 .active_tab {
+    position: relative;
     border-bottom: 0;
     z-index: 2;
     background-color: #FFFBF3;
@@ -32,7 +33,10 @@ button {
     cursor: pointer;
 }
 
-.active_section {
+.todo_section {
+    position: absolute;
+    top: 52px;
+    left: 8px;
     width: 391px;
     border: solid 2px;
     border-color: #755535;
@@ -46,6 +50,28 @@ button {
     border-bottom-right-radius: 25px;
     background-color: #FFFBF3;
     z-index: 1;
+}
+.done_section {
+    position: absolute;
+    top: 52px;
+    left: 8px;
+    width: 391px;
+    border: solid 2px;
+    border-color: #755535;
+    padding-top: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 25px;
+    margin-top: -2px;
+    height: 600px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #FFFBF3;
+    z-index: 0;
+}
+
+.display_none {
+    display: none;
 }
 
 #add_section {
