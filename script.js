@@ -69,7 +69,7 @@ function showTaskArr(arr) {
         li.innerHTML=`<p>${elm.text}</p>
         <div class="flex_row">
         <p class="margin_right">${elm.amount}</p>
-        <img class="icon margin_right taskDone" src="check-mark.png" alt="" />
+        <img class="icon margin_right taskDone" title="Task done" src="check-mark.png" alt="" />
         <img class="icon likingIt" src=${elm.liked?"love.png":"love-empty.png"} alt="" /></div>`
 
         task_container.appendChild(li);
@@ -100,8 +100,8 @@ arr.forEach (elm => {
     li.innerHTML= `<p>${elm.text}</p>
         <div class="flex_row">
         <p class="margin_right">${elm.amount}</p>
-        <img class="icon margin_right delete" src="delete.png"} alt="" />
-        <img class="icon undoTask" src="file.png" alt="" /></div>`
+        <img class="icon margin_right delete" title ="delete" src="delete.png"} alt="" />
+        <img class="icon undoTask" title ="Undo task" src="file.png" alt="" /></div>`
 
     done_container.appendChild(li);
 
