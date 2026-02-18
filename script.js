@@ -14,6 +14,17 @@ const todoSection = document.querySelector(".todo_section");
 doneBtn.addEventListener("click", showDone);
 todoBtn.addEventListener("click", showTodo);
 
+window.addEventListener("DOMContentLoaded", () => {
+    const storedTodos = localStorage.getItem("todos");
+
+    if (storedTodos) {
+        const parsedTodos = JSON.parse(storedTodos); //lavet det om til objekt/arry igen
+        todoArr.push(...parsedTodos); //... er så den ikke laver et array inde i array
+        filterAndSort ();
+    }
+});
+
+
 function showDone() {
     todoSection.style.zIndex ="0";
     doneSection.style.zIndex = "1";
@@ -46,7 +57,8 @@ function filterAndSort () {
 
     showTaskArr(activeTask);
     showDoneArr(doneTask);
-    //local storage
+    
+    localStorage.setItem("todos", JSON.stringify(todoArr));
 }
 
 function showTaskArr(arr) {
@@ -61,20 +73,16 @@ function showTaskArr(arr) {
         <img class="icon likingIt" src=${elm.liked?"love.png":"love-empty.png"} alt="" /></div>`
 
         task_container.appendChild(li);
-        console.log("done =", `${elm.done}`)
 
         todoAmount.value = null;
         todoText.value = null;
 
         li.addEventListener("click",(evt)=> {
             if (evt.target.classList.contains("likingIt")){
-                 console.log("KLIK",evt.target);
                  elm.liked = !elm.liked;
-                    console.log("todoArr", todoArr);
                      filterAndSort();
             }
              if (evt.target.classList.contains("taskDone")){
-                console.log("task done clicked", `${elm.id}`);
                 elm.done = true;
                 filterAndSort ();
             }
@@ -88,6 +96,7 @@ done_container.innerHTML="";
 
 arr.forEach (elm => {
     const li = document.createElement("li");
+
     li.innerHTML= `<p>${elm.text}</p>
         <div class="flex_row">
         <p class="margin_right">${elm.amount}</p>
@@ -95,7 +104,6 @@ arr.forEach (elm => {
         <img class="icon undoTask" src="file.png" alt="" /></div>`
 
     done_container.appendChild(li);
-    console.log ("done list id=", `${elm.id}`)
 
     li.addEventListener("click", (evt)=> {
         if (evt.target.classList.contains("undoTask")){
