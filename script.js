@@ -20,16 +20,32 @@ window.addEventListener("DOMContentLoaded", () => {
     if (storedTodos) {
         const parsedTodos = JSON.parse(storedTodos); //lavet det om til objekt/arry igen
         todoArr.push(...parsedTodos); //... er så den ikke laver et array inde i array
-        filterAndSort ();
+    } else {
+        const defaultTodos = [
+            {
+                text: "Get internship",
+                amount: "",
+                done: false,
+                liked: true,
+                id: crypto.randomUUID()
+            },
+                {text: "Buy catfood",
+                amount: "3 kg",
+                done: false,
+                liked: false,
+                id: crypto.randomUUID()}
+        ];
+        todoArr.push(...defaultTodos);
     }
+    filterAndSort ();
 });
 
 
 function showDone() {
     todoSection.style.zIndex ="0";
     doneSection.style.zIndex = "1";
-    todoBtn.style.backgroundColor = "#FFF4DE";
-    doneBtn.style.backgroundColor = "#FFFBF3";
+    todoBtn.style.backgroundColor = "#D7D5FF";
+    doneBtn.style.backgroundColor = "#F8FAFF";
     todoBtn.classList.remove("active_tab");
     doneBtn.classList.add("active_tab");
 }
@@ -37,8 +53,8 @@ function showDone() {
 function showTodo() {
     todoSection.style.zIndex = "1";
     doneSection.style.zIndex ="0";
-    doneBtn.style.backgroundColor = "#FFF4DE";
-    todoBtn.style.backgroundColor = "#FFFBF3";
+    doneBtn.style.backgroundColor = "#D7D5FF";
+    todoBtn.style.backgroundColor = "#F8FAFF";
     doneBtn.classList.remove("active_tab");
     todoBtn.classList.add("active_tab");
 }
@@ -83,8 +99,13 @@ function showTaskArr(arr) {
                      filterAndSort();
             }
              if (evt.target.classList.contains("taskDone")){
-                elm.done = true;
+                li.classList.add("slide_right");
+
+                li.addEventListener("animationend", () => {
+                    elm.done = true;
+                    li.classList.remove("slide_out");
                 filterAndSort ();
+                })
             }
            }); 
 
@@ -107,8 +128,13 @@ arr.forEach (elm => {
 
     li.addEventListener("click", (evt)=> {
         if (evt.target.classList.contains("undoTask")){
-            elm.done = false;
-            filterAndSort ();
+            li.classList.add("slide_left");
+
+            li.addEventListener("animationend", () => {
+                elm.done = false;
+                li.classList.remove("slide_left");
+                filterAndSort ();
+            })
         }
 
         if (evt.target.classList.contains("delete")) {
